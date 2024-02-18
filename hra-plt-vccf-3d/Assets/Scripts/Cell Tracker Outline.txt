@@ -1,8 +1,0 @@
-Cell Tracker:
-
-5 rows
-	1: endo cell#
-	2: nonEndo cell#
-	3: Estimated dist.
-	4: Acutal dist.
-	5: Error
