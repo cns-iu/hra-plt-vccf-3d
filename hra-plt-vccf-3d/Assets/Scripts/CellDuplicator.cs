@@ -3,29 +3,25 @@ using UnityEngine;
 public class CellDuplicator : MonoBehaviour
 {
     public GameObject EndoCell; // Drag your prefab here in the Unity editor
-    public GameObject Cell;
-    private float randRange = 0.48f;
+    public GameObject BloodCell;
+    private float spawnRange = 0.43f;
 
 void Start()
     {
-        DuplicatePrefab();
+        DuplicatePrefab(100, BloodCell);
+        DuplicatePrefab(10, EndoCell);
     }
 
-    void DuplicatePrefab()
+    void DuplicatePrefab(int spawns, GameObject obj)
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < spawns; i++)
         {
-            float randX = Random.Range(-randRange, randRange);
-            float randY = Random.Range(-randRange, randRange);
-            float randZ = Random.Range(-randRange, randRange);
-            Instantiate(EndoCell, new Vector3(randX,randY,randZ), Quaternion.identity);
-        }
-        for (int i = 0; i < 100; i++)
-        {
-            float randX = Random.Range(-randRange, randRange);
-            float randY = Random.Range(-randRange, randRange);
-            float randZ = Random.Range(-randRange, randRange);
-            Instantiate(Cell, new Vector3(randX, randY, randZ), Quaternion.identity);
+            float randX = Random.Range(-(spawnRange* (float)0.8), spawnRange* (float)0.8);
+            float randY = Random.Range(-(spawnRange*2), spawnRange*2);
+            float randZ = Random.Range(-(spawnRange*(float)0.8), spawnRange* (float)0.8);
+            Vector3 randPosition = new Vector3(randX, randY, randZ);
+            Quaternion randRotation = Quaternion.Euler(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
+            Instantiate(obj, randPosition, randRotation);
         }
     }
 }

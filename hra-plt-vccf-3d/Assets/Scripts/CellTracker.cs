@@ -5,12 +5,13 @@ using UnityEditor;
 
 public class CellTracker : MonoBehaviour {
 
-    [SerializeField] 
-    private List<Vector3> positions = new List<Vector3>();
+    [SerializeField]
+    private Vector3 CellPosition;
 
     void Start() 
     {
         //positions.Add()
+        CellPosition = transform.position;
     }
 
     void Update()
